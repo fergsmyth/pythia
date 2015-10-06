@@ -9,7 +9,7 @@ data_hash = JSON.parse(page.css('div#ismJson').css('script').text)
 
 key_hash = data_hash.keys
 
-p data_hash["watchlist"]
+p data_hash["eiwteams"]
 
 # key_hash.each do |key|
 # 	p key
