@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @team.code %>
+</p>
+
+<p>
+  <strong>External:</strong>
+  <%= @team.external_id %>
+</p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @team.short_name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>String:</strong>
+  <%= @team.string %>
+</p>
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>
