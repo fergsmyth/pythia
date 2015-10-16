@@ -3,3 +3,6 @@ rails generate scaffold Player team_id:integer ff_id:integer display_name:string
 rails generate scaffold Fixture home_team_id:integer away_team_id:integer gameweek_id:integer kickoff:datetime
 
 rails generate scaffold GameweekEvent fixture_id:integer player_id:integer kickoff:datetime minutes_player:integer goals_scored:integer assists:integer clean_sheets:integer goals_conceded:integer own_goals:integer penalties_saved:integer penalties_missed yellow_cards:integer red_cards:integer saves:integer bonus_points:integer esp:integer bps:integer net_transfers:integer value:integer point:integer
+
+rails generate scaffold Gameweek
+

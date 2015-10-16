@@ -4,4 +4,6 @@ class Fixture < ActiveRecord::Base
 						foreign_key: "home_team_id"
 	belongs_to :awayteam, class_name: "Team",
 						foreign_key: "away_team_id"
+	belongs_to :gameweek
+	has_many :gameweek_events
 end
