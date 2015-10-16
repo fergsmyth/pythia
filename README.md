@@ -1,6 +1,6 @@
 == README
 
-An app for all your fantasy football information needs!
+An app for all your fantasy football information needs! Currently just parse data from fantasy.premierleague.com but will be built out.
 
 Planned features:
 * Line ups
