@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :gameweek_events
+
   resources :fixtures
 
   resources :players

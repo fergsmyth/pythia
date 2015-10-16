@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fixture_id: 1
+  player_id: 1
+  kickoff: 2015-10-16 20:25:37
+  minutes_player: 1
+  goals_scored: 1
+  assists: 1
+  clean_sheets: 1
+  goals_conceded: 1
+  own_goals: 1
+  penalties_saved: 1
+  penalties_missed: MyString
+  yellow_cards: 1
+  red_cards: 1
+  saves: 1
+  bonus_points: 1
+  esp: 1
+  bps: 1
+  net_transfers: 1
+  value: 1
+  point: 1
+
+two:
+  fixture_id: 1
+  player_id: 1
+  kickoff: 2015-10-16 20:25:37
+  minutes_player: 1
+  goals_scored: 1
+  assists: 1
+  clean_sheets: 1
+  goals_conceded: 1
+  own_goals: 1
+  penalties_saved: 1
+  penalties_missed: MyString
+  yellow_cards: 1
+  red_cards: 1
+  saves: 1
+  bonus_points: 1
+  esp: 1
+  bps: 1
+  net_transfers: 1
+  value: 1
+  point: 1
