@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Gameweeks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gameweeks.each do |gameweek| %>
+      <tr>
+        <td><%= link_to 'Show', gameweek %></td>
+        <td><%= link_to 'Edit', edit_gameweek_path(gameweek) %></td>
+        <td><%= link_to 'Destroy', gameweek, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gameweek', new_gameweek_path %>

@@ -1,0 +1,17 @@
+<%= form_for(@gameweek) do |f| %>
+  <% if @gameweek.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gameweek.errors.count, "error") %> prohibited this gameweek from being saved:</h2>
+
+      <ul>
+      <% @gameweek.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
