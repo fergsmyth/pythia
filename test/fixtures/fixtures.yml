@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  home_team_id: 1
+  away_team_id: 1
+  gameweek_id: 1
+  kickoff: 2015-10-16 18:39:18
+
+two:
+  home_team_id: 1
+  away_team_id: 1
+  gameweek_id: 1
+  kickoff: 2015-10-16 18:39:18

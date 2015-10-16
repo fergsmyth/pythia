@@ -1,0 +1,91 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Players</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>Ff</th>
+      <th>Display name</th>
+      <th>Position</th>
+      <th>Selected by</th>
+      <th>Total point</th>
+      <th>Team code</th>
+      <th>News</th>
+      <th>Status</th>
+      <th>Code</th>
+      <th>First name</th>
+      <th>Second name</th>
+      <th>Now cost</th>
+      <th>Chance of playing this round</th>
+      <th>Chance of playing next round</th>
+      <th>Value form</th>
+      <th>Value season</th>
+      <th>Cost change start</th>
+      <th>Cost change start fall</th>
+      <th>In dreamteam</th>
+      <th>Dreamteam count</th>
+      <th>Selected by percent</th>
+      <th>Form</th>
+      <th>Transfers out</th>
+      <th>Transfers in</th>
+      <th>Loans in</th>
+      <th>Loans out</th>
+      <th>Loaned in</th>
+      <th>Loaned out</th>
+      <th>Points per game</th>
+      <th>Ep this</th>
+      <th>Ep next</th>
+      <th>Special</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.team_id %></td>
+        <td><%= player.ff_id %></td>
+        <td><%= player.display_name %></td>
+        <td><%= player.position %></td>
+        <td><%= player.selected_by %></td>
+        <td><%= player.total_point %></td>
+        <td><%= player.team_code %></td>
+        <td><%= player.news %></td>
+        <td><%= player.status %></td>
+        <td><%= player.code %></td>
+        <td><%= player.first_name %></td>
+        <td><%= player.second_name %></td>
+        <td><%= player.now_cost %></td>
+        <td><%= player.chance_of_playing_this_round %></td>
+        <td><%= player.chance_of_playing_next_round %></td>
+        <td><%= player.value_form %></td>
+        <td><%= player.value_season %></td>
+        <td><%= player.cost_change_start %></td>
+        <td><%= player.cost_change_start_fall %></td>
+        <td><%= player.in_dreamteam %></td>
+        <td><%= player.dreamteam_count %></td>
+        <td><%= player.selected_by_percent %></td>
+        <td><%= player.form %></td>
+        <td><%= player.transfers_out %></td>
+        <td><%= player.transfers_in %></td>
+        <td><%= player.loans_in %></td>
+        <td><%= player.loans_out %></td>
+        <td><%= player.loaned_in %></td>
+        <td><%= player.loaned_out %></td>
+        <td><%= player.points_per_game %></td>
+        <td><%= player.ep_this %></td>
+        <td><%= player.ep_next %></td>
+        <td><%= player.special %></td>
+        <td><%= link_to 'Show', player %></td>
+        <td><%= link_to 'Edit', edit_player_path(player) %></td>
+        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Player', new_player_path %>

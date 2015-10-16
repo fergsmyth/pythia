@@ -1,5 +1,3 @@
-# \http://fantasy.premierleague.com/web/api/elements/445/
-
 require 'nokogiri'
 
 require 'json'

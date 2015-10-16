@@ -1,0 +1,149 @@
+<%= form_for(@player) do |f| %>
+  <% if @player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@player.errors.count, "error") %> prohibited this player from being saved:</h2>
+
+      <ul>
+      <% @player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :team_id %><br>
+    <%= f.number_field :team_id %>
+  </div>
+  <div class="field">
+    <%= f.label :ff_id %><br>
+    <%= f.number_field :ff_id %>
+  </div>
+  <div class="field">
+    <%= f.label :display_name %><br>
+    <%= f.text_field :display_name %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :selected_by %><br>
+    <%= f.text_field :selected_by %>
+  </div>
+  <div class="field">
+    <%= f.label :total_point %><br>
+    <%= f.number_field :total_point %>
+  </div>
+  <div class="field">
+    <%= f.label :team_code %><br>
+    <%= f.number_field :team_code %>
+  </div>
+  <div class="field">
+    <%= f.label :news %><br>
+    <%= f.text_field :news %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.number_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :second_name %><br>
+    <%= f.text_field :second_name %>
+  </div>
+  <div class="field">
+    <%= f.label :now_cost %><br>
+    <%= f.number_field :now_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :chance_of_playing_this_round %><br>
+    <%= f.number_field :chance_of_playing_this_round %>
+  </div>
+  <div class="field">
+    <%= f.label :chance_of_playing_next_round %><br>
+    <%= f.number_field :chance_of_playing_next_round %>
+  </div>
+  <div class="field">
+    <%= f.label :value_form %><br>
+    <%= f.text_field :value_form %>
+  </div>
+  <div class="field">
+    <%= f.label :value_season %><br>
+    <%= f.text_field :value_season %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_change_start %><br>
+    <%= f.number_field :cost_change_start %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_change_start_fall %><br>
+    <%= f.number_field :cost_change_start_fall %>
+  </div>
+  <div class="field">
+    <%= f.label :in_dreamteam %><br>
+    <%= f.check_box :in_dreamteam %>
+  </div>
+  <div class="field">
+    <%= f.label :dreamteam_count %><br>
+    <%= f.number_field :dreamteam_count %>
+  </div>
+  <div class="field">
+    <%= f.label :selected_by_percent %><br>
+    <%= f.text_field :selected_by_percent %>
+  </div>
+  <div class="field">
+    <%= f.label :form %><br>
+    <%= f.text_field :form %>
+  </div>
+  <div class="field">
+    <%= f.label :transfers_out %><br>
+    <%= f.number_field :transfers_out %>
+  </div>
+  <div class="field">
+    <%= f.label :transfers_in %><br>
+    <%= f.number_field :transfers_in %>
+  </div>
+  <div class="field">
+    <%= f.label :loans_in %><br>
+    <%= f.number_field :loans_in %>
+  </div>
+  <div class="field">
+    <%= f.label :loans_out %><br>
+    <%= f.number_field :loans_out %>
+  </div>
+  <div class="field">
+    <%= f.label :loaned_in %><br>
+    <%= f.number_field :loaned_in %>
+  </div>
+  <div class="field">
+    <%= f.label :loaned_out %><br>
+    <%= f.number_field :loaned_out %>
+  </div>
+  <div class="field">
+    <%= f.label :points_per_game %><br>
+    <%= f.text_field :points_per_game %>
+  </div>
+  <div class="field">
+    <%= f.label :ep_this %><br>
+    <%= f.text_field :ep_this %>
+  </div>
+  <div class="field">
+    <%= f.label :ep_next %><br>
+    <%= f.text_field :ep_next %>
+  </div>
+  <div class="field">
+    <%= f.label :special %><br>
+    <%= f.check_box :special %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
