@@ -51,6 +51,25 @@ class TeamsController < ApplicationController
     end
   end
 
+  def populate
+    file = File.read(Dir.pwd+"/app/assets/static data/teams.json")
+
+    data_hash = JSON.parse(file)
+
+    key_hash = data_hash.keys
+
+    key_hash.each do |key|
+      unless (Team.exists?(code: data_hash[key]['code']))
+        team = Team.create(code: data_hash[key]['code'], external_id: data_hash[key]['id'], short_name: data_hash[key]['short_name'], name: data_hash[key]['name'])
+      end
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to teams_url, notice: 'Teams were successfully imported.' }
+      format.json { head :no_content }
+    end
+  end
+
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
