@@ -4,18 +4,20 @@ require 'nokogiri'
 
 require 'json'
 
-file = File.open("sample html/fantasyfootball.html")
-page = Nokogiri::HTML(file)
+file = File.read("../app/assets/static data/teams.json")
 
-data_hash = JSON.parse(page.css('div#ismJson').css('script').text)
+data_hash = JSON.parse(file)
 
 key_hash = data_hash.keys
 
-p data_hash["eiwteams"]
+#p data_hash["eiwteams"]
 
-# key_hash.each do |key|
-# 	p key
-# end
+ key_hash.each do |key|
+ 	p data_hash[key]['code']
+ 	p data_hash[key]['id']
+ 	p data_hash[key]['short_name']
+ 	p data_hash[key]['name']
+ end
 
 #p data_hash['elInfo']
 
