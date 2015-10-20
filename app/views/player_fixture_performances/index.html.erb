@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Player Fixture Performances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fixture</th>
+      <th>Player</th>
+      <th>Kickoff</th>
+      <th>Minutes player</th>
+      <th>Goals scored</th>
+      <th>Assists</th>
+      <th>Clean sheets</th>
+      <th>Goals conceded</th>
+      <th>Own goals</th>
+      <th>Penalties saved</th>
+      <th>Penalties missed</th>
+      <th>Yellow cards</th>
+      <th>Red cards</th>
+      <th>Saves</th>
+      <th>Bonus points</th>
+      <th>Esp</th>
+      <th>Bps</th>
+      <th>Net transfers</th>
+      <th>Value</th>
+      <th>Point</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @player_fixture_performances.each do |player_fixture_performance| %>
+      <tr>
+        <td><%= player_fixture_performance.fixture_id %></td>
+        <td><%= player_fixture_performance.player_id %></td>
+        <td><%= player_fixture_performance.kickoff %></td>
+        <td><%= player_fixture_performance.minutes_player %></td>
+        <td><%= player_fixture_performance.goals_scored %></td>
+        <td><%= player_fixture_performance.assists %></td>
+        <td><%= player_fixture_performance.clean_sheets %></td>
+        <td><%= player_fixture_performance.goals_conceded %></td>
+        <td><%= player_fixture_performance.own_goals %></td>
+        <td><%= player_fixture_performance.penalties_saved %></td>
+        <td><%= player_fixture_performance.penalties_missed %></td>
+        <td><%= player_fixture_performance.yellow_cards %></td>
+        <td><%= player_fixture_performance.red_cards %></td>
+        <td><%= player_fixture_performance.saves %></td>
+        <td><%= player_fixture_performance.bonus_points %></td>
+        <td><%= player_fixture_performance.esp %></td>
+        <td><%= player_fixture_performance.bps %></td>
+        <td><%= player_fixture_performance.net_transfers %></td>
+        <td><%= player_fixture_performance.value %></td>
+        <td><%= player_fixture_performance.point %></td>
+        <td><%= link_to 'Show', player_fixture_performance %></td>
+        <td><%= link_to 'Edit', edit_player_fixture_performance_path(player_fixture_performance) %></td>
+        <td><%= link_to 'Destroy', player_fixture_performance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Player fixture performance', new_player_fixture_performance_path %>

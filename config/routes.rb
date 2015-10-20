@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :player_fixture_performances
+
   root 'teams#index'
 
   resources :gameweeks
 
-  resources :gameweek_events
 
   resources :fixtures
 
