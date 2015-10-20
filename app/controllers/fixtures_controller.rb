@@ -61,6 +61,13 @@ class FixturesController < ApplicationController
     end
   end
 
+  def populate
+    respond_to do |format|
+      format.html { redirect_to fixtures_url, notice: 'Fixture was successfully bummed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fixture

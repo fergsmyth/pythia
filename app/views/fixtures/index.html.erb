@@ -31,3 +31,5 @@
 <br>
 
 <%= link_to 'New Fixture', new_fixture_path %>
+<br>
+<%= link_to 'Import Static Fixtures', importfixtures_path, method: :populate, data: { confirm: 'Are you sure?' } %>
