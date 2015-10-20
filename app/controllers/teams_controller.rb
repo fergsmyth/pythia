@@ -51,6 +51,13 @@ class TeamsController < ApplicationController
     end
   end
 
+  def populate
+    respond_to do |format|
+      format.html { redirect_to teams_url, notice: 'Teams were successfully imported.' }
+      format.json { head :no_content }
+    end
+  end
+
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
