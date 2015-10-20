@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'teams#index'
+
   resources :gameweeks
 
   resources :gameweek_events
