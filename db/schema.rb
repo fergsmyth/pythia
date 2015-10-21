@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021182951) do
+ActiveRecord::Schema.define(version: 20151021200701) do
 
   create_table "fixtures", force: :cascade do |t|
     t.integer  "home_team_id"
     t.integer  "away_team_id"
     t.integer  "gameweek_id"
     t.datetime "kickoff"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "scrapper_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "scrapper_job_id"
   end
 
   create_table "gameweek_events", force: :cascade do |t|
@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20151021182951) do
   end
 
   create_table "gameweeks", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "scrapper_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "scrapper_job_id"
   end
 
   create_table "player_fixture_performances", force: :cascade do |t|
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20151021182951) do
     t.integer  "point"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "scrapper_id"
+    t.integer  "scrapper_job_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20151021182951) do
     t.string   "display_name"
     t.string   "position"
     t.string   "selected_by"
-    t.integer  "total_point"
+    t.integer  "total_points"
     t.integer  "team_code"
     t.string   "news"
     t.string   "status"
@@ -116,7 +116,12 @@ ActiveRecord::Schema.define(version: 20151021182951) do
     t.boolean  "special"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.integer  "scrapper_id"
+    t.integer  "scrapper_job_id"
+  end
+
+  create_table "scrapper_jobs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|
@@ -127,7 +132,6 @@ ActiveRecord::Schema.define(version: 20151021182951) do
     t.string   "string"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "scrapper_id"
   end
 
 end

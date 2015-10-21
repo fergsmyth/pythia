@@ -13,7 +13,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :code
       t.string :first_name
       t.string :second_name
-      t.integer :now_cost
+      t.float :now_cost
       t.integer :chance_of_playing_this_round
       t.integer :chance_of_playing_next_round
       t.float :value_form

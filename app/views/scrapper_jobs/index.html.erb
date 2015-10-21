@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Scrapper Jobs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scrapper_jobs.each do |scrapper_job| %>
+      <tr>
+        <td><%= link_to 'Show', scrapper_job %></td>
+        <td><%= link_to 'Edit', edit_scrapper_job_path(scrapper_job) %></td>
+        <td><%= link_to 'Destroy', scrapper_job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scrapper job', new_scrapper_job_path %>
