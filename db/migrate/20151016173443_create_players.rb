@@ -5,8 +5,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :ff_id
       t.string :display_name
       t.string :position
-      t.string :selected_by
-      t.integer :total_point
+      t.float :selected_by
+      t.integer :total_points
       t.integer :team_code
       t.string :news
       t.string :status
@@ -18,8 +18,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :chance_of_playing_next_round
       t.float :value_form
       t.float :value_season
-      t.integer :cost_change_start
-      t.integer :cost_change_start_fall
+      t.float :cost_change_start
+      t.float :cost_change_start_fall
       t.boolean :in_dreamteam
       t.integer :dreamteam_count
       t.float :selected_by_percent
