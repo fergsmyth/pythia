@@ -11,7 +11,7 @@ class CreatePlayerFixturePerformances < ActiveRecord::Migration
       t.integer :goals_conceded
       t.integer :own_goals
       t.integer :penalties_saved
-      t.string :penalties_missed
+      t.integer :penalties_missed
       t.integer :yellow_cards
       t.integer :red_cards
       t.integer :saves

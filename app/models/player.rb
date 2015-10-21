@@ -1,4 +1,4 @@
 class Player < ActiveRecord::Base
 	belongs_to :team
-	has_many :gameweek_events
+	has_many :player_fixture_performances
 end

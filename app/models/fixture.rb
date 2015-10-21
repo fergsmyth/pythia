@@ -5,5 +5,5 @@ class Fixture < ActiveRecord::Base
 	belongs_to :awayteam, class_name: "Team",
 						foreign_key: "away_team_id"
 	belongs_to :gameweek
-	has_many :gameweek_events
+	has_many :player_fixture_performances
 end
