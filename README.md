@@ -8,4 +8,9 @@ Planned features:
 * Import your team
 * WhoScored integration
 * Price change predictor
+
+Heroku:
+http://intense-sands-1804.herokuapp.com/
+
+
 <tt>rake doc:app</tt>.
