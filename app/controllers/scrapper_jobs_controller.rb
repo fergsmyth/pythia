@@ -39,7 +39,7 @@ class ScrapperJobsController < ApplicationController
     player.selected_by = data_hash['selected_by'].to_f# selected_by STring to float
     player.total_points =  data_hash['total_points']# total_points
     player.team_code = data_hash['team_code']# team_code use to find actual team? Maybe doesnt need to be persisted?
-    player.team_id = Team.find_by code: player.team_code
+    player.team = Team.find_by code: player.team_code
     player.news = data_hash['news']# news
     player.status = data_hash['status']# status
     player.code = data_hash['code']# code
