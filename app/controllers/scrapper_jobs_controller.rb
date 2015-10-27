@@ -48,6 +48,7 @@ class ScrapperJobsController < ApplicationController
       # This will need to be changed to take into account a player changing team
       player_fixture_performance = PlayerFixturePerformance.find_or_create_by(player: player, fixture: fixture)
       player_fixture_performance.populate event
+      player_fixture_performance.save
     end
     
     respond_to do |format|
