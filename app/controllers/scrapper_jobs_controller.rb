@@ -35,6 +35,21 @@ class ScrapperJobsController < ApplicationController
     player.scrapper_job_id = @scrapper_job.id
     player.populate data_hash 
     player.save
+
+    events_array = data_hash['fixture_history']['all']
+    events_array.each do |event| 
+      opp_team = Team.find_by(short_name: event[2][0..2])
+      if event[2][4] == 'H'
+        fixture = Fixture.find_or_create_by(home_team: player.team, away_team: opp_team)
+      else
+        fixture = Fixture.find_or_create_by(home_team: opp_team, away_team: player.team)
+      end
+
+      # This will need to be changed to take into account a player changing team
+      player_fixture_performance = PlayerFixturePerformance.find_or_create_by(player: player, fixture: fixture)
+      player_fixture_performance.populate event
+    end
+    
     respond_to do |format|
       if @scrapper_job.save
         format.html { redirect_to @scrapper_job, notice: 'Scrapper job was successfully created.' }

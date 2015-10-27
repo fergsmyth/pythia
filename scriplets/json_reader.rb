@@ -10,6 +10,12 @@ data_hash = JSON.parse(file)
 
 key_hash = data_hash.keys
 
+events_array = data_hash['fixture_history']['all']
+events_array.each do |x| 
+	puts x[2][4]
+end
+
+
 # p key_hash
 # data_hash['id']# ff_id
 # data_hash['web_name']# display_name
@@ -18,7 +24,7 @@ key_hash = data_hash.keys
 # data_hash['total_points']# total_points
 # data_hash['team_code']# team_code use to find actual team? Maybe doesnt need to be persisted?
 # data_hash['news']# news
-p data_hash['status']# status
+# p data_hash['fixture_history']['all'][0]# status
 # data_hash['code']# code
 # data_hash['first_name']# first_name
 # data_hash['second_name']# second_name
