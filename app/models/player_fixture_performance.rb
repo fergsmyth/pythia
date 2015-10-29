@@ -4,7 +4,7 @@ class PlayerFixturePerformance < ActiveRecord::Base
   belongs_to :scrapper_job
 
   def populate(event)
-  	self.kickoff = event[0]
+  	self.kickoff = event[0] # Should be moved to corresponding fixture
   	self.minutes_player = event[3]
 	self.goals_scored = event[4]
 	self.assists = event[5]
