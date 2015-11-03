@@ -39,11 +39,17 @@ class ScrapperJobsController < ApplicationController
     events_array = data_hash['fixture_history']['all']
     events_array.each do |event| 
       opp_team = Team.find_by(short_name: event[2][0..2])
+      if opp_team.nil?
+        p event[2][0..2]
+      end
       if event[2][4] == 'H'
         fixture = Fixture.find_or_create_by(home_team: player.team, away_team: opp_team)
       else
         fixture = Fixture.find_or_create_by(home_team: opp_team, away_team: player.team)
       end
+      fixture.kickoff = event[0]
+      fixture.gameweek_id = event[1]
+      fixture.save
 
       # This will need to be changed to take into account a player changing team
       player_fixture_performance = PlayerFixturePerformance.find_or_create_by(player: player, fixture: fixture)
@@ -54,7 +60,15 @@ class ScrapperJobsController < ApplicationController
 
     fixtures_array = data_hash['fixtures']['all']
     fixtures_array.each do |fixture_element|
-      
+      opp_team = Team.find_by(name: fixture_element[2][0...-4])
+      if fixture_element[2][-2,1] == 'H'
+        fixture = Fixture.find_or_create_by(home_team: player.team, away_team: opp_team)
+      else
+        fixture = Fixture.find_or_create_by(home_team: opp_team, away_team: player.team)
+      end
+      fixture.kickoff = fixture_element[0]
+      fixture.gameweek_id = fixture_element[1][-2,2]
+      fixture.save
     end
 
     respond_to do |format|

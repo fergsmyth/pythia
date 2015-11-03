@@ -10,9 +10,22 @@ data_hash = JSON.parse(file)
 
 key_hash = data_hash.keys
 
+# events_array = data_hash['fixtures']['all']
+# events_array.each do |x| 
+# 	puts x[2][0...-4]
+# end
+
 events_array = data_hash['fixture_history']['all']
-events_array.each do |x| 
-	puts x[2][4]
+	events_array.each do |event| 
+	opp_team = event[2][0..2]
+
+		p event[0]
+	
+	if event[2][4] == 'H'
+		p fixture = opp_team + ' H'
+	else
+		p fixture = opp_team + ' A'
+	end
 end
 
 
