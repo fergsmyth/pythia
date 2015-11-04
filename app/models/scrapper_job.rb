@@ -8,6 +8,7 @@ class ScrapperJob < ActiveRecord::Base
 
 	def scrape_ff
 
+		first_run = PlayerFixturePerformance.count.zero? #used to import all historical or not
 		# file = File.read(Dir.pwd+"/scriplets/sample html/player.json")
 	  for player_element_id in 0..700 do
 		begin
@@ -20,24 +21,26 @@ class ScrapperJob < ActiveRecord::Base
 
 			events_array = data_hash['fixture_history']['all']
 			events_array.each do |event| 
-			  opp_team = Team.find_by(short_name: event[2][0..2])
-			  if opp_team.nil?
-			    p event[2][0..2]
-			  end
-			  if event[2][4] == 'H'
-			    fixture = Fixture.find_by(home_team: player.team, away_team: opp_team)
-			  else
-			    fixture = Fixture.find_by(home_team: opp_team, away_team: player.team)
-			  end
-			  fixture.kickoff = event[0]
-			  fixture.gameweek_id = event[1]
-			  fixture.save
+				if first_run || DateTime.parse(event[0]) + 2 > DateTime.now
+					opp_team = Team.find_by(short_name: event[2][0..2])
+				  if opp_team.nil?
+				    p event[2][0..2]
+				  end
+				  if event[2][4] == 'H'
+				    fixture = Fixture.find_by(home_team: player.team, away_team: opp_team)
+				  else
+				    fixture = Fixture.find_by(home_team: opp_team, away_team: player.team)
+				  end
+				  fixture.kickoff = event[0]
+				  fixture.gameweek_id = event[1]
+				  fixture.save
 
-			  # This will need to be changed to take into account a player changing team
-			  player_fixture_performance = PlayerFixturePerformance.find_or_create_by(player: player, fixture: fixture)
-			  player_fixture_performance.populate event
-			  player_fixture_performance.scrapper_job_id = self.id
-			  player_fixture_performance.save
+				  # This will need to be changed to take into account a player changing team
+				  player_fixture_performance = PlayerFixturePerformance.find_or_create_by(player: player, fixture: fixture)
+				  player_fixture_performance.populate event
+				  player_fixture_performance.scrapper_job_id = self.id
+				  player_fixture_performance.save
+				end
 			end
 
 			fixtures_array = data_hash['fixtures']['all']
