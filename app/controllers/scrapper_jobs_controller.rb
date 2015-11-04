@@ -1,5 +1,4 @@
 class ScrapperJobsController < ApplicationController
-  require 'json'
   before_action :set_scrapper_job, only: [:show, :edit, :update, :destroy]
 
   # GET /scrapper_jobs
