@@ -9,6 +9,7 @@ class ScrapperJob < ActiveRecord::Base
 	def scrape_ff
 
 		first_run = PlayerFixturePerformance.count.zero? #used to import all historical or not
+		team_fixture_array = Array.new #used to limit teh amount of updating of future fixtures
 		# file = File.read(Dir.pwd+"/scriplets/sample html/player.json")
 	  for player_element_id in 0..700 do
 		begin
@@ -43,17 +44,20 @@ class ScrapperJob < ActiveRecord::Base
 				end
 			end
 
-			fixtures_array = data_hash['fixtures']['all']
-			fixtures_array.each do |fixture_element|
-			  opp_team = Team.find_by(name: fixture_element[2][0...-4])
-			  if fixture_element[2][-2,1] == 'H'
-			    fixture = Fixture.find_by(home_team: player.team, away_team: opp_team)
-			  else
-			    fixture = Fixture.find_by(home_team: opp_team, away_team: player.team)
-			  end
-			  fixture.kickoff = fixture_element[0]
-			  fixture.gameweek_id = fixture_element[1][-2,2]
-			  fixture.save
+			if team_fixture_array.include? player.team
+				team_fixture_array.push(player.team)
+				fixtures_array = data_hash['fixtures']['all']
+				fixtures_array.each do |fixture_element|
+				  opp_team = Team.find_by(name: fixture_element[2][0...-4])
+				  if fixture_element[2][-2,1] == 'H'
+				    fixture = Fixture.find_by(home_team: player.team, away_team: opp_team)
+				  else
+				    fixture = Fixture.find_by(home_team: opp_team, away_team: player.team)
+				  end
+				  fixture.kickoff = fixture_element[0]
+				  fixture.gameweek_id = fixture_element[1][-2,2]
+				  fixture.save
+				end
 			end
 		rescue Exception => ex
 			p '404'
