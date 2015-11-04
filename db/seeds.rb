@@ -17,3 +17,11 @@ key_hash.each do |key|
     team = Team.create(code: data_hash[key]['code'], external_id: data_hash[key]['id'], short_name: data_hash[key]['short_name'], name: data_hash[key]['name'])
   end
 end
+
+
+Team.find_each do |home_team|
+	Team.where("id != ?", home_team.id).each do |away_team|
+		Fixture.create(home_team: home_team, away_team: away_team)
+	end
+end
+

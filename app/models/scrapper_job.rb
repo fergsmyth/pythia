@@ -9,7 +9,7 @@ class ScrapperJob < ActiveRecord::Base
 	def scrape_ff
 
 		# file = File.read(Dir.pwd+"/scriplets/sample html/player.json")
-	  for player_element_id in 0..600 do
+	  for player_element_id in 0..700 do
 		begin
 			data_hash = JSON.load(open('http://fantasy.premierleague.com/web/api/elements/'+player_element_id.to_s))
 			
@@ -25,9 +25,9 @@ class ScrapperJob < ActiveRecord::Base
 			    p event[2][0..2]
 			  end
 			  if event[2][4] == 'H'
-			    fixture = Fixture.find_or_create_by(home_team: player.team, away_team: opp_team)
+			    fixture = Fixture.find_by(home_team: player.team, away_team: opp_team)
 			  else
-			    fixture = Fixture.find_or_create_by(home_team: opp_team, away_team: player.team)
+			    fixture = Fixture.find_by(home_team: opp_team, away_team: player.team)
 			  end
 			  fixture.kickoff = event[0]
 			  fixture.gameweek_id = event[1]
@@ -44,9 +44,9 @@ class ScrapperJob < ActiveRecord::Base
 			fixtures_array.each do |fixture_element|
 			  opp_team = Team.find_by(name: fixture_element[2][0...-4])
 			  if fixture_element[2][-2,1] == 'H'
-			    fixture = Fixture.find_or_create_by(home_team: player.team, away_team: opp_team)
+			    fixture = Fixture.find_by(home_team: player.team, away_team: opp_team)
 			  else
-			    fixture = Fixture.find_or_create_by(home_team: opp_team, away_team: player.team)
+			    fixture = Fixture.find_by(home_team: opp_team, away_team: player.team)
 			  end
 			  fixture.kickoff = fixture_element[0]
 			  fixture.gameweek_id = fixture_element[1][-2,2]
