@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021200701) do
+ActiveRecord::Schema.define(version: 20151105002903) do
 
   create_table "fixtures", force: :cascade do |t|
     t.integer  "home_team_id"
@@ -21,31 +21,6 @@ ActiveRecord::Schema.define(version: 20151021200701) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "scrapper_job_id"
-  end
-
-  create_table "gameweek_events", force: :cascade do |t|
-    t.integer  "fixture_id"
-    t.integer  "player_id"
-    t.datetime "kickoff"
-    t.integer  "minutes_player"
-    t.integer  "goals_scored"
-    t.integer  "assists"
-    t.integer  "clean_sheets"
-    t.integer  "goals_conceded"
-    t.integer  "own_goals"
-    t.integer  "penalties_saved"
-    t.string   "penalties_missed"
-    t.integer  "yellow_cards"
-    t.integer  "red_cards"
-    t.integer  "saves"
-    t.integer  "bonus_points"
-    t.integer  "esp"
-    t.integer  "bps"
-    t.integer  "net_transfers"
-    t.integer  "value"
-    t.integer  "point"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
   end
 
   create_table "gameweeks", force: :cascade do |t|
@@ -65,7 +40,7 @@ ActiveRecord::Schema.define(version: 20151021200701) do
     t.integer  "goals_conceded"
     t.integer  "own_goals"
     t.integer  "penalties_saved"
-    t.string   "penalties_missed"
+    t.integer  "penalties_missed"
     t.integer  "yellow_cards"
     t.integer  "red_cards"
     t.integer  "saves"
@@ -85,7 +60,7 @@ ActiveRecord::Schema.define(version: 20151021200701) do
     t.integer  "ff_id"
     t.string   "display_name"
     t.string   "position"
-    t.string   "selected_by"
+    t.float    "selected_by"
     t.integer  "total_points"
     t.integer  "team_code"
     t.string   "news"
@@ -93,13 +68,13 @@ ActiveRecord::Schema.define(version: 20151021200701) do
     t.integer  "code"
     t.string   "first_name"
     t.string   "second_name"
-    t.integer  "now_cost"
+    t.float    "now_cost"
     t.integer  "chance_of_playing_this_round"
     t.integer  "chance_of_playing_next_round"
     t.float    "value_form"
     t.float    "value_season"
-    t.integer  "cost_change_start"
-    t.integer  "cost_change_start_fall"
+    t.float    "cost_change_start"
+    t.float    "cost_change_start_fall"
     t.boolean  "in_dreamteam"
     t.integer  "dreamteam_count"
     t.float    "selected_by_percent"
@@ -120,8 +95,9 @@ ActiveRecord::Schema.define(version: 20151021200701) do
   end
 
   create_table "scrapper_jobs", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "scrapper_type"
   end
 
   create_table "teams", force: :cascade do |t|
