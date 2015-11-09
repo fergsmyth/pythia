@@ -12,9 +12,9 @@ class ScrapperJob < ActiveRecord::Base
 		team_fixture_array = Array.new #used to limit teh amount of updating of future fixtures
 		# file = File.read(Dir.pwd+"/scriplets/sample html/player.json")
 	  for player_element_id in 0..700 do
-		begin
+		 begin
 			data_hash = JSON.load(open('http://fantasy.premierleague.com/web/api/elements/'+player_element_id.to_s))
-			
+			# "07 Nov 15:00"
 			player = Player.find_or_create_by(ff_id: data_hash['id'])
 			player.scrapper_job_id = self.id
 			player.populate data_hash 
@@ -22,7 +22,7 @@ class ScrapperJob < ActiveRecord::Base
 
 			events_array = data_hash['fixture_history']['all']
 			events_array.each do |event| 
-				if first_run || DateTime.parse(event[0]) + 2 > DateTime.now
+				if first_run || DateTime.strptime(event[0],'%d %b %H:%M') + 2 > DateTime.now
 					opp_team = Team.find_by(short_name: event[2][0..2])
 				  if opp_team.nil?
 				    p event[2][0..2]
@@ -59,9 +59,9 @@ class ScrapperJob < ActiveRecord::Base
 				  fixture.save
 				end
 			end
-		rescue Exception => ex
-			p '404'
-		end
-	  end
+		 rescue Exception => ex
+		 	p '404'
+		 end
+	   end
 	end	
 end

@@ -6,7 +6,7 @@ one:
   display_name: MyString
   position: MyString
   selected_by: MyString
-  total_point: 1
+  total_points: 1
   team_code: 1
   news: MyString
   status: MyString
@@ -41,7 +41,7 @@ two:
   display_name: MyString
   position: MyString
   selected_by: MyString
-  total_point: 1
+  total_points: 1
   team_code: 1
   news: MyString
   status: MyString

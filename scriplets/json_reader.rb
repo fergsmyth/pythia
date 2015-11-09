@@ -4,23 +4,31 @@ require 'nokogiri'
 
 require 'json'
 
-	require 'open-uri'
+require 'open-uri'
 
-# file = File.read(Dir.pwd+"/scriplets/sample html/player.json")
+file = File.read(Dir.pwd+"/scriplets/sample html/player.json")
 
-# data_hash = JSON.parse(file)
+data_hash = JSON.parse(file)
 
+events_array = data_hash['fixture_history']['all']
+events_array.each do |x| 
+	puts DateTime.parse(x[0]) + 2
+end
 # key_hash = data_hash.keys
 
 # events_array = data_hash['fixtures']['all']
 # events_array.each do |x| 
 # 	puts x[2][0...-4]
 # end
-		begin
-p data_hash = JSON.load(open('http://fantasy.premierleague.com/web/api/elements/'+1000.to_s))
-		rescue Exception => ex
-			p '404'
-		end
+# 		begin
+# p data_hash = JSON.load(open('http://fantasy.premierleague.com/web/api/elements/'+1000.to_s))
+# 		rescue Exception => ex
+# 			p '404'
+# 		end
+
+
+
+			 
 
 # key_hash = data_hash.keys
 # key_hash.each do |k|
