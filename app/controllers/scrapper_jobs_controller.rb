@@ -21,6 +21,12 @@ class ScrapperJobsController < ApplicationController
   def edit
   end
 
+  # GET /scrapper_jobs
+  def update_results
+    @scrapper_job = ScrapperJob.new(scrapper_job_params)
+    @scrapper_job.scrape_results   
+  end
+
   # POST /scrapper_jobs
   # POST /scrapper_jobs.json
   def create
@@ -29,11 +35,11 @@ class ScrapperJobsController < ApplicationController
 
     respond_to do |format|
       if @scrapper_job.save
-        format.html { redirect_to @scrapper_job, notice: 'Scrapper job was successfully created.' }
-        format.json { render :show, status: :created, location: @scrapper_job }
+	format.html { redirect_to @scrapper_job, notice: 'Scrapper job was successfully created.' }
+	format.json { render :show, status: :created, location: @scrapper_job }
       else
-        format.html { render :new }
-        format.json { render json: @scrapper_job.errors, status: :unprocessable_entity }
+	format.html { render :new }
+	format.json { render json: @scrapper_job.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +49,11 @@ class ScrapperJobsController < ApplicationController
   def update
     respond_to do |format|
       if @scrapper_job.update(scrapper_job_params)
-        format.html { redirect_to @scrapper_job, notice: 'Scrapper job was successfully updated.' }
-        format.json { render :show, status: :ok, location: @scrapper_job }
+	format.html { redirect_to @scrapper_job, notice: 'Scrapper job was successfully updated.' }
+	format.json { render :show, status: :ok, location: @scrapper_job }
       else
-        format.html { render :edit }
-        format.json { render json: @scrapper_job.errors, status: :unprocessable_entity }
+	format.html { render :edit }
+	format.json { render json: @scrapper_job.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,13 +69,13 @@ class ScrapperJobsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_scrapper_job
-      @scrapper_job = ScrapperJob.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_scrapper_job
+    @scrapper_job = ScrapperJob.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def scrapper_job_params
-      params[:scrapper_job]
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def scrapper_job_params
+    params[:scrapper_job]
+  end
 end
