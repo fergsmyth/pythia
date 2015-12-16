@@ -1,13 +1,14 @@
 class ScrapperJob < ActiveRecord::Base
   require 'json'
   require 'open-uri'
+  require 'capybara/poltergeist'
+  include Capybara::DSL
 
   has_many :fixtures
   has_many :players
   has_many :player_fixture_performances
-
-  def update_results
-    include Capybara::DSL
+	 
+  def scrape_results
 
     Capybara.register_driver :poltergeist do |app|
       Capybara::Poltergeist::Driver.new(app, {js_errors: false})
