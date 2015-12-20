@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :team_sheets
+
   resources :scrapper_jobs
 
   resources :player_fixture_performances

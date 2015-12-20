@@ -25,3 +25,6 @@ Team.find_each do |home_team|
 	end
 end
 
+1.upto(38) do |i|
+  Gameweek.create(week: i)
+end

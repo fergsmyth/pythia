@@ -4,6 +4,10 @@ class Fixture < ActiveRecord::Base
 						foreign_key: "home_team_id"
 	belongs_to :away_team, class_name: "Team",
 						foreign_key: "away_team_id"
+	belongs_to :home_teamsheet, class_name: "TeamSheet", foreign_key: "home_team_sheet_id"
+
+	belongs_to :away_teamsheet, class_name: "TeamSheet", foreign_key: "away_team_sheet_id"
+
 	belongs_to :gameweek
 	has_many :player_fixture_performances
 	belongs_to :scrapper_job
