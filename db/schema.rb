@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(version: 20151218001309) do
 
   create_table "fixtures", force: :cascade do |t|
+    t.integer  "gameweek_id"
     t.integer  "home_team_id"
     t.integer  "away_team_id"
-    t.integer  "gameweek_id"
     t.datetime "kickoff"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20151218001309) do
   end
 
   create_table "gameweeks", force: :cascade do |t|
+    t.integer  "week"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "scrapper_job_id"
-    t.integer "week"
   end
 
   create_table "player_fixture_performances", force: :cascade do |t|
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20151218001309) do
 
   create_table "team_sheets", force: :cascade do |t|
     t.string   "name"
+    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

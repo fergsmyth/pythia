@@ -5,8 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Home team</th>
-      <th>Away team</th>
       <th>Gameweek</th>
       <th>Kickoff</th>
       <th colspan="3"></th>
@@ -16,8 +14,6 @@
   <tbody>
     <% @fixtures.each do |fixture| %>
       <tr>
-        <td><%= fixture.home_team_id %></td>
-        <td><%= fixture.away_team_id %></td>
         <td><%= fixture.gameweek_id %></td>
         <td><%= fixture.kickoff %></td>
         <td><%= link_to 'Show', fixture %></td>

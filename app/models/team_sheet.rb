@@ -1,3 +1,4 @@
 class TeamSheet < ActiveRecord::Base
-  belongs_to :fixture
+  has_one :fixture
+  belongs_to :team
 end
