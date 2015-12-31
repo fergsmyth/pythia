@@ -7,7 +7,7 @@ class ScrapperJob < ActiveRecord::Base
   has_many :fixtures
   has_many :players
   has_many :player_fixture_performances
-	 
+
   def scrape_results
 
     Capybara.register_driver :poltergeist do |app|
@@ -16,30 +16,42 @@ class ScrapperJob < ActiveRecord::Base
     Capybara.default_driver = :poltergeist
 
     visit ('http://www.whoscored.com/')
-
     first('#popular-tournaments-list a').click
     all_links = []
     # Gets all links from the 
     loop do
       links = page.all(:css, 'table#tournament-fixture td.result a.result-1')
-      links.each { |link| 	p link["href"]
-		   all_links.push(link["href"])
+      links.each { |link| 	
+	p link["href"]
+	p link.text
+	fixtureLink = FixtureLink.new(link["href"], link.text)
+	all_links.push(fixtureLink)
       }
       p page.first(:css, 'div#date-controller a#date-config-toggle-button span').text
       previous = page.find(".previous")
       break if previous[:class].include?("is-disabled")
       previous.click
-      sleep 3
+      sleep 10
     end
 
-    all_links.each  {|link|  visit(link) 
+    all_links.each  {|fixtureLink|  visit(fixtureLink.link) 
 		     sleep 10
 		     # Retrieve div containing home team info
 		     team_info = page.all(:css, '.team-info')
-		     p team_info.first.find('.team-name').text
-		     p team_info.first.find('.formation').text
-		     p team_info.last.find('.team-name').text
-		     p team_info.last.find('.formation').text
+		     home_team_name = team_info.first.find('.team-name').text
+		     home_formation = team_info.first.find('.formation').text
+		     away_team_name = team_info.last.find('.team-name').text
+		     away_formation = team_info.last.find('.formation').text
+		     unique_name = home_team_name + " VS " + away_team_name
+		     fixture = Fixture.find_by(unique_name: unique_name)
+		     fixture.result = fixtureLink.result
+		     fixture.home_team.formation = home_formation
+		     fixture.away_team.formation = away_formation
+		     Fixture.transaction do
+		       fixture.home_team.save
+		       fixture.away_team.save
+		       fixture.save
+		     end
     }
   end
 
@@ -101,4 +113,7 @@ class ScrapperJob < ActiveRecord::Base
       end
     end
   end	
+end
+
+class FixtureLink < Struct.new(:link, :result)
 end

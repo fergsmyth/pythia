@@ -23,7 +23,8 @@ Team.find_each do |home_team|
 	Team.where("id != ?", home_team.id).each do |away_team|
 		home = TeamSheet.create(name: home_team.name, team: home_team)
 		away = TeamSheet.create(name: away_team.name, team: away_team)
-		Fixture.create(home_team: home, away_team: away)
+		unique_name = home.name + " VS " + away.name
+		Fixture.create(home_team: home, away_team: away, unique_name: unique_name)
 	end
 end
 

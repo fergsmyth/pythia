@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Fixture</th>
+      <th>Formation</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +14,8 @@
   <tbody>
     <% @team_sheets.each do |team_sheet| %>
       <tr>
-        <td><%= team_sheet.name %></td>
-	<td><%= team_sheet.fixture_id %></td>
+	<td><%= team_sheet.team.name %></td>
+	<td><%= team_sheet.formation %></td>
         <td><%= link_to 'Show', team_sheet %></td>
         <td><%= link_to 'Edit', edit_team_sheet_path(team_sheet) %></td>
         <td><%= link_to 'Destroy', team_sheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>

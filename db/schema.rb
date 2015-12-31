@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20151218001309) do
 
   create_table "fixtures", force: :cascade do |t|
     t.integer  "gameweek_id"
+    t.string   "unique_name"
+    t.string   "result"
     t.integer  "home_team_id"
     t.integer  "away_team_id"
     t.datetime "kickoff"
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 20151218001309) do
   create_table "team_sheets", force: :cascade do |t|
     t.string   "name"
     t.integer  "team_id"
+    t.string   "formation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
