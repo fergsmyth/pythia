@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   resources :gameweeks
 
-
   resources :fixtures
 
   resources :players
