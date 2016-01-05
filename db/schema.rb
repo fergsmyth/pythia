@@ -11,18 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109221518) do
+ActiveRecord::Schema.define(version: 20151218001309) do
 
   create_table "fixtures", force: :cascade do |t|
-    t.integer  "gameweek_id"
-    t.string   "unique_name"
-    t.string   "result"
     t.integer  "home_team_id"
     t.integer  "away_team_id"
+    t.integer  "gameweek_id"
     t.datetime "kickoff"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "scrapper_job_id"
   end
 
   create_table "gameweek_events", force: :cascade do |t|
@@ -51,7 +48,6 @@ ActiveRecord::Schema.define(version: 20151109221518) do
   end
 
   create_table "gameweeks", force: :cascade do |t|
-    t.integer  "week"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "scrapper_job_id"
