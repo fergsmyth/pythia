@@ -5,24 +5,20 @@
 <table>
   <thead>
     <tr>
-      <th>Home team</th>
-      <th>Away team</th>
-      <th>Gameweek</th>
-      <th>Kickoff</th>
-      <th colspan="3"></th>
+      <th>Home</th>
+      <th>Result</th>
+      <th>Away</th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @fixtures.each do |fixture| %>
       <tr>
-        <td><%= fixture.home_team_id %></td>
-        <td><%= fixture.away_team_id %></td>
-        <td><%= fixture.gameweek_id %></td>
-        <td><%= fixture.kickoff %></td>
+        <td><%= fixture.home_team.name %></td>
+	<td><%= fixture.result %></td>
+        <td><%= fixture.away_team.name %></td>
         <td><%= link_to 'Show', fixture %></td>
-        <td><%= link_to 'Edit', edit_fixture_path(fixture) %></td>
-        <td><%= link_to 'Destroy', fixture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

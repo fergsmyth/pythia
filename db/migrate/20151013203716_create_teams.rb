@@ -6,7 +6,6 @@ class CreateTeams < ActiveRecord::Migration
       t.string :short_name
       t.string :name
       t.string :string
-
       t.timestamps null: false
     end
   end

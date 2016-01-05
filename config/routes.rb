@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :team_sheets
+
   resources :scrapper_jobs
 
   resources :player_fixture_performances
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
 
   post 'importteams' => 'teams#populate'
 
+  post '/update_results' => 'scrapper_jobs#update_results'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
