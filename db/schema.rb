@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20151218001309) do
     t.integer  "home_team_id"
     t.integer  "away_team_id"
     t.integer  "gameweek_id"
+    t.string   "unique_name"
     t.datetime "kickoff"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20151218001309) do
   create_table "gameweeks", force: :cascade do |t|
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "week"
     t.integer  "scrapper_job_id"
   end
 
